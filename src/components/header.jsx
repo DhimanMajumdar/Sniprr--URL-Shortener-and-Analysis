@@ -13,7 +13,7 @@ import { LinkIcon, LogOut } from "lucide-react";
 
 const Header = () => {
   const navigate = useNavigate();
-  const user = true;
+  const user = false;
 
   return (
     <header className="w-full bg-transparent py-4 shadow-sm">
@@ -27,7 +27,12 @@ const Header = () => {
         </Link>
         <div>
           {!user ? (
-            <Button onClick={() => navigate("/auth")}>Login</Button>
+            <Button
+              className="cursor-pointer"
+              onClick={() => navigate("/auth")}
+            >
+              Login
+            </Button>
           ) : (
             <DropdownMenu>
               <DropdownMenuTrigger className="rounded-full overflow-hidden">
