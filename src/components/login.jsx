@@ -15,6 +15,7 @@ import { BeatLoader } from "react-spinners";
 import Error from "./error";
 import useFetch from "../hooks/use-fetch";
 import { useNavigate, useSearchParams } from "react-router";
+import { UrlState } from "../context";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -34,8 +35,10 @@ const Login = () => {
   };
 
   const { data, error, loading, fn: fnLogin } = useFetch(login, formData);
+  const { fetchUser } = UrlState();
   useEffect(() => {
     if (!error && data) {
+      fetchUser();
       navigate(`/dashboard?${longLink ? `createNew=${longLink}` : ""}`);
     }
   }, [data, error]);
@@ -92,7 +95,7 @@ const Login = () => {
         </div>
       </CardContent>
       <CardFooter>
-        <Button onClick={handleLogin}>
+        <Button onClick={handleLogin} className="cursor-pointer">
           {loading ? (
             <BeatLoader className=" size-10 items-center " color="#36d7b7" />
           ) : (
