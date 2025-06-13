@@ -13,7 +13,7 @@ const RedirectLink = () => {
   });
   useEffect(() => {
     fn();
-  });
+  }, []);
   useEffect(() => {
     if (!loading && data) {
       fnStats();
