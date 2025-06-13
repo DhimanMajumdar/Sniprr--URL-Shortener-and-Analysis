@@ -79,9 +79,13 @@ export async function getLongUrl(id) {
     .or(`short_url.eq.${id},custom_url.eq.${id}`)
     .single();
 
-  if (error) {
-    console.error(error.apply.message);
-    throw new Error("Unable to get long URL");
+  if (error || !data) {
+    console.error(error?.message || "URL not found");
+    throw new Error("Short URL not found");
+  }
+
+  if (!data.original_url.startsWith("http")) {
+    data.original_url = "https://" + data.original_url;
   }
 
   return data;
