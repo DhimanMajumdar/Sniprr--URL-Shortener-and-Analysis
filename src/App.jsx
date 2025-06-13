@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import AppLayout from "./layouts/app-layout";
 import LandingPage from "./pages/landing";
