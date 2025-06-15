@@ -18,6 +18,7 @@ import { BarLoader } from "react-spinners";
 const Header = () => {
   const navigate = useNavigate();
   const { user, fetchUser } = UrlState();
+  console.log("User metadata:", user?.user_metadata);
   const { loading, fn: fnLogout } = useFetch(logout);
 
   return (
