@@ -15,6 +15,7 @@ import { useNavigate, useSearchParams } from "react-router";
 import { signup } from "../db/apiAuth.js";
 import { BeatLoader } from "react-spinners";
 import useFetch from "../hooks/use-fetch.jsx";
+import { toast } from "sonner"; // ✅ import toast
 
 const Signup = () => {
   let [searchParams] = useSearchParams();
@@ -42,6 +43,7 @@ const Signup = () => {
 
   useEffect(() => {
     if (error === null && data) {
+      toast.success("Signup successful! Please check your email.");
       navigate(`/dashboard?${longLink ? `createNew=${longLink}` : ""}`);
     }
   }, [error, loading]);

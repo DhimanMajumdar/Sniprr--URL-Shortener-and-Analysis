@@ -7,6 +7,7 @@ import RedirectLink from "./pages/redirect-link";
 import Dashboard from "./pages/dashboard";
 import UrlProvider from "./context";
 import RequireAuth from "./components/require-auth";
+import { Toaster } from "./components/ui/toaster";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,7 @@ function App() {
   return (
     <UrlProvider>
       <RouterProvider router={router} />
+      <Toaster />
     </UrlProvider>
   );
 }
